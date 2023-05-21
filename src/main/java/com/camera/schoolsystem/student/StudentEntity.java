@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
@@ -12,8 +13,9 @@ import java.time.LocalDate;
 @Builder(toBuilder = true)
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class StudentEntity {
-
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,5 +43,7 @@ public class StudentEntity {
     @Column(name = "contact_number")
     private String contactNumber;
 
+    @Column(name = "users_id")
+    private Long user;
 
 }

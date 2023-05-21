@@ -20,7 +20,7 @@ public class OpenApiConfig {
         contact.setName("Kalil El Ammar");
         contact.setUrl("https://www.linkedin.com/in/kalil-el-ammar-a083b51ba/");
 
-        License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
+        License mitLicense = new License().name("License").url("https://www.linkedin.com/in/kalil-el-ammar-a083b51ba/");
 
         Info info = new Info()
                 .title("School System API")

@@ -11,7 +11,6 @@ import java.util.List;
 @Tag(name = "Students", description = "Operations for students")
 @RestController
 @RequestMapping("/students")
-
 public class StudentController {
 
     private final StudentService studentService;
@@ -22,8 +21,7 @@ public class StudentController {
 
     @Operation(
             summary = "Retrieve a list of all Students",
-            description = "A list of all registered students.",
-            tags = {"students", "get"})
+            description = "A list of all registered students.")
     @GetMapping
     public ResponseEntity<List<StudentEntity>> getAllStudents() {
         List<StudentEntity> students = studentService.getAllStudents();
@@ -32,8 +30,7 @@ public class StudentController {
 
     @Operation(
             summary = "Retrieve a Student by ID",
-            description = "Provide a valid ID.",
-            tags = {"students", "get"})
+            description = "Provide a valid ID.")
     @GetMapping("/{id}")
     public ResponseEntity<StudentEntity> getStudentById(@PathVariable Long id) {
         StudentEntity student = studentService.getStudentById(id);
@@ -45,8 +42,7 @@ public class StudentController {
 
     @Operation(
             summary = "Create a new Student",
-            description = "The ID value will be ignored, the database handles ID.",
-            tags = {"students", "post"})
+            description = "The ID value will be ignored, the database handles ID.")
     @PostMapping
     public ResponseEntity<StudentEntity> createStudent(@RequestBody StudentEntity student) {
         StudentEntity createdStudent = studentService.createStudent(student);
@@ -54,9 +50,8 @@ public class StudentController {
     }
 
     @Operation(
-            summary = "Update an Student by ID.",
-            description = "Update fields on an existing Student",
-            tags = {"students", "post"})
+            summary = "Update a Student by ID.",
+            description = "Update fields on an existing Student")
     @PutMapping("/{id}")
     public ResponseEntity<StudentEntity> updateStudent(@PathVariable Long id, @RequestBody StudentEntity student) {
         StudentEntity updatedStudent = studentService.updateStudent(id, student);
@@ -68,8 +63,7 @@ public class StudentController {
 
     @Operation(
             summary = "Delete a Student by ID.",
-            description = "Delete a Student from the database.",
-            tags = {"students", "delete"})
+            description = "Delete a Student from the database.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         boolean deleted = studentService.deleteStudent(id);
