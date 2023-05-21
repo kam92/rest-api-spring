@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class UserService {
@@ -32,17 +33,13 @@ public class UserService {
     }
 
     public UserDto getUserById(Long id) {
-        try {
-            UserEntity user = userRepository.findById(id).get();
-            UserDto userDto = new UserDto();
-            userDto.setId(user.getId());
-            userDto.setRole(user.getRole());
-            userDto.setBlocked(user.getBlocked());
-            userDto.setUsername(user.getUsername());
-            return userDto;
-        } catch (Exception e) {
-            return null;
-        }
+        UserEntity user = userRepository.findById(id).get();
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setRole(user.getRole());
+        userDto.setBlocked(user.getBlocked());
+        userDto.setUsername(user.getUsername());
+        return userDto;
     }
 
     public UserDto createUser(UserEntity user) {
@@ -59,14 +56,11 @@ public class UserService {
 
     public UserEntity updateUser(Long id, UserEntity updatedUser) {
         UserEntity existingUser = userRepository.findById(id).orElse(null);
-        if (existingUser != null) {
-            existingUser.setRole(updatedUser.getRole());
-            existingUser.setPassword(encodePassword(updatedUser.getPassword()));
-            existingUser.setUsername(updatedUser.getUsername());
-            existingUser.setBlocked((short) 0);
-            return userRepository.save(existingUser);
-        }
-        return null;
+        existingUser.setRole(updatedUser.getRole());
+        existingUser.setPassword(encodePassword(updatedUser.getPassword()));
+        existingUser.setUsername(updatedUser.getUsername());
+        existingUser.setBlocked((short) 0);
+        return userRepository.save(existingUser);
     }
 
     private String encodePassword(String password) {
@@ -75,10 +69,12 @@ public class UserService {
     }
 
     public boolean deleteUser(Long id) {
-        if (userRepository.existsById(id)) {
+        try {
+            userRepository.findById(id).get();
             userRepository.deleteById(id);
             return true;
+        } catch (Exception e) {
+            throw new NoSuchElementException();
         }
-        return false;
     }
 }

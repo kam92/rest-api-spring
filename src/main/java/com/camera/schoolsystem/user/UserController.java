@@ -24,7 +24,8 @@ public class UserController {
             description = "A list of all registered users.")
     @GetMapping
     public ResponseEntity<List<UserDto>> getAllUsers() {
-        return ResponseEntity.ok(userService.getAllUsers());
+        List<UserDto> returnList = userService.getAllUsers();
+        return ResponseEntity.ok(returnList);
     }
 
     @Operation(
@@ -32,10 +33,8 @@ public class UserController {
             description = "Provide a valid ID.")
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable Long id) {
-        if (userService.getUserById(id) != null) {
-            return ResponseEntity.ok(userService.getUserById(id));
-        }
-        return ResponseEntity.notFound().build();
+        UserDto userDto = userService.getUserById(id);
+        return ResponseEntity.ok(userDto);
     }
 
     @Operation(
@@ -43,7 +42,8 @@ public class UserController {
             description = "The ID value will be ignored, the database handles ID.")
     @PostMapping
     public ResponseEntity<UserDto> createUser(@RequestBody UserEntity user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.createUser(user));
+        UserDto userDto = userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userDto);
     }
 
     @Operation(
@@ -52,10 +52,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity student) {
         UserEntity updatedStudent = userService.updateUser(id, student);
-        if (updatedStudent != null) {
-            return ResponseEntity.ok(updatedStudent);
-        }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(updatedStudent);
     }
 
     @Operation(
@@ -63,10 +60,8 @@ public class UserController {
             description = "Delete an User from the database.")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        boolean deleted = userService.deleteUser(id);
-        if (deleted) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        userService.deleteUser(id);
+        return ResponseEntity.ok(null);
+
     }
 }

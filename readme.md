@@ -33,7 +33,6 @@ emergency contact, grade...</br>
 -Authentication with Spring Security 3.0</br>
 
 TODO:</br>
--Create the exceptions for each case, Exception Manager etc...</br>
 -Unit Tests</br>
 -make Spring Security consider the database created user instead of the java in-built one</br>
 -create some logic to edit Students in a batch, for example to alter the grade of a whole approved class and etc.</br>

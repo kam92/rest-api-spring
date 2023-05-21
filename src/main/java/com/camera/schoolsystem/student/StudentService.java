@@ -3,6 +3,7 @@ package com.camera.schoolsystem.student;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class StudentService {
@@ -18,7 +19,7 @@ public class StudentService {
     }
 
     public StudentEntity getStudentById(Long id) {
-        return studentRepository.findById(id).orElse(null);
+        return studentRepository.findById(id).orElseThrow();
     }
 
     public StudentEntity createStudent(StudentEntity student) {
@@ -42,10 +43,13 @@ public class StudentService {
     }
 
     public boolean deleteStudent(Long id) {
-        if (studentRepository.existsById(id)) {
+        try {
+            studentRepository.findById(id).get();
             studentRepository.deleteById(id);
             return true;
+        } catch (Exception e) {
+            throw new NoSuchElementException(e);
         }
-        return false;
+
     }
 }
