@@ -28,5 +28,7 @@ CREATE TABLE students (
   contact_number VARCHAR(20)
 );
 
--- Insert a user for login
+-- Insert a user for login and update table permissions
 INSERT INTO users (username, password, role) VALUES ('admin', '12345', 'admin');
+ALTER TABLE users OWNER TO schooluser;
+ALTER TABLE students OWNER TO schooluser;

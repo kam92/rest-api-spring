@@ -1,6 +1,7 @@
 package com.camera.schoolsystem.student;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Table(name = "students")
 @Builder(toBuilder = true)
 @Data
+@AllArgsConstructor
 public class StudentEntity {
 
     @Id
