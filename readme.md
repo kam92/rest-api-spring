@@ -30,7 +30,7 @@ at: http://127.0.0.1:8080/docs </br>
 -User CRUD operations. You need a user to authenticate. User roles are in UserRoleEnum.java</br>
 -Student CRUD operations. A student will have an user ID for reference, besides it's personal data such as name,
 emergency contact, grade...</br>
--Generate Students PDF report
+-Generate Students PDF report</br>
 -Authentication with Spring Security 3.0</br>
 
 TODO:</br>
