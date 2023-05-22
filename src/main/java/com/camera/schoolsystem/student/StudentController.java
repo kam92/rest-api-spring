@@ -29,6 +29,14 @@ public class StudentController {
     }
 
     @Operation(
+            summary = "Retrieve a PDF file of all Students",
+            description = "A report of all students")
+    @GetMapping("/export")
+    public ResponseEntity<byte[]> exportStudentsToPDF() {
+        return studentService.exportStudentsToPDF();
+    }
+
+    @Operation(
             summary = "Retrieve a Student by ID",
             description = "Provide a valid ID.")
     @GetMapping("/{id}")

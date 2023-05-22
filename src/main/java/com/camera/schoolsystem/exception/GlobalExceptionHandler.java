@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
 
     ExceptionTO malformedRequest = new ExceptionTO("MALFORMED REQUEST");
     ExceptionTO notFound = new ExceptionTO("NOT FOUND");
-    
+
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ExceptionTO> handleNotFoundException(NotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
@@ -26,11 +26,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ExceptionTO> handleNullPointerException(NullPointerException ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(malformedRequest);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ExceptionTO(ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionTO> handleException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(malformedRequest);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ExceptionTO(ex.getMessage()));
     }
 }
