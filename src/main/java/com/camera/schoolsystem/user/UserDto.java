@@ -9,6 +9,6 @@ public class UserDto {
     private Long id;
     private String username;
     private UserRoleEnum role;
-    private int blocked;
+    private Short blocked;
 
 }

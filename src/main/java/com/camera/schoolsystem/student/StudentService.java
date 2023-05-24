@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class StudentService {
@@ -96,13 +95,10 @@ public class StudentService {
     }
 
     public boolean deleteStudent(Long id) {
-        try {
-            studentRepository.findById(id).get();
-            studentRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            throw new NoSuchElementException(e);
-        }
+        studentRepository.findById(id).get();
+        studentRepository.deleteById(id);
+        return true;
+
 
     }
 }

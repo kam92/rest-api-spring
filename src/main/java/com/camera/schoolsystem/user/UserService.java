@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 public class UserService {
@@ -55,7 +54,7 @@ public class UserService {
     }
 
     public UserEntity updateUser(Long id, UserEntity updatedUser) {
-        UserEntity existingUser = userRepository.findById(id).orElse(null);
+        UserEntity existingUser = userRepository.findById(id).orElseThrow();
         existingUser.setRole(updatedUser.getRole());
         existingUser.setPassword(encodePassword(updatedUser.getPassword()));
         existingUser.setUsername(updatedUser.getUsername());
@@ -63,18 +62,14 @@ public class UserService {
         return userRepository.save(existingUser);
     }
 
-    private String encodePassword(String password) {
+    String encodePassword(String password) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         return encoder.encode(password);
     }
 
     public boolean deleteUser(Long id) {
-        try {
-            userRepository.findById(id).get();
-            userRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            throw new NoSuchElementException();
-        }
+        userRepository.findById(id).get();
+        userRepository.deleteById(id);
+        return true;
     }
 }
