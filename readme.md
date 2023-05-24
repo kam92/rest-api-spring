@@ -34,6 +34,7 @@ emergency contact, grade...</br>
 -Authentication with Spring Security 3.0</br>
 
 TODO:</br>
+-discover how to make Spring Security 3 redirect to /docs after login
 -make Spring Security consider the database created user instead of the java in-built one</br>
 -create some logic to edit Students in a batch, for example to alter the grade of a whole approved class and etc.</br>
 </br>
