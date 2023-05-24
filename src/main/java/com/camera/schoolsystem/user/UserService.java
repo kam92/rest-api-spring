@@ -1,6 +1,7 @@
 package com.camera.schoolsystem.user;
 
 import com.camera.schoolsystem.enumeration.UserRoleEnum;
+import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;

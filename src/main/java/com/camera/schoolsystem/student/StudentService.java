@@ -1,5 +1,6 @@
 package com.camera.schoolsystem.student;
 
+import jakarta.transaction.Transactional;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
+@Transactional
 public class StudentService {
 
     private final StudentRepository studentRepository;
