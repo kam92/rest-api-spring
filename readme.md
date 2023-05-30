@@ -2,15 +2,8 @@
 
 Java 17, Spring 3.0, PostgreSQL...
 
-To run this back-end you need Java 17 and PostgreSQL installed in the system.
-
-<b>Database Configuration:</b><br>
-The database and it's user will be created by the SQL script, you just need to make sure the
-URL connection is right in application.properties.<br>
-If you use the default options when installing Postgres, it will work out of the box. <br>
-
-Go into resources/migrations and run the script using a PSQL console.<br>
-It will create the database, an user with permissions and the tables.<br>
+To run this back-end you need Java 17.<br>
+The Database is in-memory (h2).
 
 <b>Server Configuration:</b></br>
 To start the server, navigate to project root and run:
