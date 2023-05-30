@@ -19,16 +19,16 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false)
+    @Column(nullable = false)
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "role", nullable = false)
+    @Column(nullable = false)
     private UserRoleEnum role;
 
-    @Column(name = "blocked", columnDefinition = "SMALLINT", nullable = false)
+    @Column(nullable = false)
     private short blocked;
 
 }
