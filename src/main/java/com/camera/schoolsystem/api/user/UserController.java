@@ -1,5 +1,6 @@
-package com.camera.schoolsystem.user;
+package com.camera.schoolsystem.api.user;
 
+import com.camera.schoolsystem.controller.AbstractController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,7 @@ import java.util.List;
 @Tag(name = "Users", description = "Operations for users")
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserController extends AbstractController<UserService> {
 
     private final UserService userService;
 

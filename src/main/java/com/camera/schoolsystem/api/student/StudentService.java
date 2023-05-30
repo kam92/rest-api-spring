@@ -1,5 +1,6 @@
-package com.camera.schoolsystem.student;
+package com.camera.schoolsystem.api.student;
 
+import com.camera.schoolsystem.service.ServiceInterface;
 import jakarta.transaction.Transactional;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class StudentService {
+public class StudentService implements ServiceInterface {
 
     private final StudentRepository studentRepository;
 

@@ -1,8 +1,8 @@
-package com.camera.schoolsystem.user;
+package com.camera.schoolsystem.api.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
 }

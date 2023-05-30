@@ -1,5 +1,9 @@
 package com.camera.schoolsystem.user;
 
+import com.camera.schoolsystem.api.user.UserDto;
+import com.camera.schoolsystem.api.user.UserEntity;
+import com.camera.schoolsystem.api.user.UserRepository;
+import com.camera.schoolsystem.api.user.UserService;
 import com.camera.schoolsystem.enumeration.UserRoleEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

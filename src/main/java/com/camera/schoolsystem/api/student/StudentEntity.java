@@ -1,4 +1,4 @@
-package com.camera.schoolsystem.student;
+package com.camera.schoolsystem.api.student;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

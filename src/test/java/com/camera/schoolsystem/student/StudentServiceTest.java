@@ -1,5 +1,8 @@
 package com.camera.schoolsystem.student;
 
+import com.camera.schoolsystem.api.student.StudentEntity;
+import com.camera.schoolsystem.api.student.StudentRepository;
+import com.camera.schoolsystem.api.student.StudentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

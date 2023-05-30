@@ -1,4 +1,4 @@
-package com.camera.schoolsystem.user;
+package com.camera.schoolsystem.api.user;
 
 import com.camera.schoolsystem.enumeration.UserRoleEnum;
 import lombok.Data;
